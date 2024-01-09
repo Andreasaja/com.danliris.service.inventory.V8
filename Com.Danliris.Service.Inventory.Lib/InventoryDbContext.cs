@@ -105,6 +105,7 @@ namespace Com.Danliris.Service.Inventory.Lib
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            //error disini
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.ApplyConfiguration(new MaterialsRequestNoteConfig());
@@ -135,7 +136,7 @@ namespace Com.Danliris.Service.Inventory.Lib
 
             modelBuilder.ApplyConfiguration(new GarmentLeftoverWarehouseExpenditureFinishedGoodConfig());
             modelBuilder.ApplyConfiguration(new GarmentLeftoverWarehouseExpenditureFinishedGoodItemConfig());
-
+            
             modelBuilder.ApplyConfiguration(new GarmentLeftoverWarehouseExpenditureFabricConfig());
             modelBuilder.ApplyConfiguration(new GarmentLeftoverWarehouseExpenditureFabricItemConfig());
 
