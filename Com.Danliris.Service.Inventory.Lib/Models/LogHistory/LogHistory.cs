@@ -11,11 +11,11 @@ namespace com.Danliris.Service.Inventory.Lib.Models.LogHistory
         [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity), Key()]
         public int Id { get; set; }
         [MaxLength(255)]
-        public string Division { get; set; }
+        public string? Division { get; set; }
         [MaxLength(1000)]
-        public string Activity { get; set; }
+        public string? Activity { get; set; }
         public DateTime CreatedDate { get; set; }
         [MaxLength(255)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
     }
 }

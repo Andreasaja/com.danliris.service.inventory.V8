@@ -40,10 +40,14 @@ using Com.Danliris.Service.Inventory.Lib.Configs.GarmentWasteProductionConfig.Re
 using Com.Danliris.Service.Inventory.Lib.Configs.GarmentLeftoverWarehouse.GarmentExpenditureWasteProductionsConfig;
 using Com.Danliris.Service.Inventory.Lib.Configs.GarmentWasteProductionConfig.ExpenditureWasteConfig;
 using com.Danliris.Service.Inventory.Lib.Models.LogHistory;
+using Com.Moonlay.Models;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using Microsoft.EntityFrameworkCore.Metadata;
+using System.Linq.Expressions;
 
 namespace Com.Danliris.Service.Inventory.Lib
 {
-    public class InventoryDbContext : BaseDbContext
+    public class InventoryDbContext : DbContext
     {
         public InventoryDbContext(DbContextOptions<InventoryDbContext> options) : base(options)
         {
@@ -156,6 +160,41 @@ namespace Com.Danliris.Service.Inventory.Lib
             modelBuilder.ApplyConfiguration(new GarmentReceiptWasteProductionItemConfig());
             modelBuilder.ApplyConfiguration(new GarmentExpenditureWasteProductionsConfig());
             modelBuilder.ApplyConfiguration(new GarmentExpenditureWasteProductionsItemConfig());
+            ConfigureEntities(modelBuilder);
+        }
+        private void ConfigureEntities(ModelBuilder modelBuilder)
+        {
+            Type baseType = typeof(BaseEntity);
+            foreach (BaseEntity item in from typeInfo in GetType().Assembly.DefinedTypes
+                                        where baseType.IsAssignableFrom(typeInfo) && !typeInfo.IsAbstract && typeInfo.IsClass
+                                        select typeInfo into info
+                                        select Activator.CreateInstance(info) as BaseEntity)
+            {
+                EntityTypeBuilder builder = modelBuilder.Entity(item.GetType());
+                ConfigureProperties(builder);
+                ConfigureQueryFilter(builder);
+            }
+        }
+
+
+
+        private void ConfigureProperties(EntityTypeBuilder builder)
+        {
+            builder.Property("_LastModifiedBy").IsRequired().HasMaxLength(255);
+            builder.Property("_LastModifiedAgent").IsRequired().HasMaxLength(255);
+            builder.Property("_CreatedBy").IsRequired().HasMaxLength(255);
+            builder.Property("_CreatedAgent").IsRequired().HasMaxLength(255);
+            builder.Property("_DeletedBy").IsRequired().HasMaxLength(255);
+            builder.Property("_DeletedAgent").IsRequired().HasMaxLength(255);
+        }
+
+        private static void ConfigureQueryFilter(EntityTypeBuilder builder)
+        {
+            ParameterExpression parameterExpression = Expression.Parameter(((ITypeBase)builder.Metadata).ClrType, "_IsDeleted");
+            MemberExpression left = Expression.Property(parameterExpression, "_IsDeleted");
+            ConstantExpression right = Expression.Constant(false);
+            BinaryExpression body = Expression.Equal(left, right);
+            builder.HasQueryFilter(Expression.Lambda(body, parameterExpression));
         }
     }
 }

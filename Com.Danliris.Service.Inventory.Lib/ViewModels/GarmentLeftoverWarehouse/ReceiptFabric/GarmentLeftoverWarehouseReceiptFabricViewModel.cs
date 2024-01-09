@@ -10,19 +10,19 @@ namespace Com.Danliris.Service.Inventory.Lib.ViewModels.GarmentLeftoverWarehouse
 {
     public class GarmentLeftoverWarehouseReceiptFabricViewModel : BasicViewModel, IValidatableObject
     {
-        public string ReceiptNoteNo { get; set; }
+        public string? ReceiptNoteNo { get; set; }
 
         public UnitViewModel UnitFrom { get; set; }
 
         public long UENId { get; set; }
-        public string UENNo { get; set; }
+        public string? UENNo { get; set; }
 
         public StorageViewModel StorageFrom { get; set; }
 
         public DateTimeOffset ExpenditureDate { get; set; }
         public DateTimeOffset? ReceiptDate { get; set; }
 
-        public string Remark { get; set; }
+        public string? Remark { get; set; }
 
         public List<GarmentLeftoverWarehouseReceiptFabricItemViewModel> Items { get; set; }
 
