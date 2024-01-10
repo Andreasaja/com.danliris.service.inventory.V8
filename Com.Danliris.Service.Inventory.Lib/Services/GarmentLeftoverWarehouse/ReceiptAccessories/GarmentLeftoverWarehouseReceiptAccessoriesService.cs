@@ -84,9 +84,13 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.GarmentLeftoverWarehouse.R
                             ProductName=item.ProductName,
                             BasicPrice = item.BasicPrice
                         };
+                        
                         await StockService.StockIn(stock, model.InvoiceNoReceive, model.Id, item.Id);
                     }
-
+                    //utk upgrade netcore V8
+                    //ini hrs d tutup,krna ini menuju ke server lain
+                    //ini adlh contoh menuju service selain service inventory =  GarmentUnitReceiptNoteUri = APIEndpoint.Purchasing + "garment-unit-expenditure-notes/";
+                    
                     await UpdateUnitExpenditureNoteIsReceived(model.UENid, true);
 
                     transaction.Commit();
