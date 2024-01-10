@@ -9,22 +9,22 @@ namespace Com.Danliris.Service.Inventory.Lib.Models.FpReturnFromBuyers
     public class FpReturnFromBuyerItemModel : StandardEntity, IValidatableObject
     {
         [MaxLength(255)]
-        public string ColorWay { get; set; }
+        public string? ColorWay { get; set; }
         [MaxLength(255)]
-        public string DesignCode { get; set; }
+        public string? DesignCode { get; set; }
         [MaxLength(255)]
-        public string DesignNumber { get; set; }
+        public string? DesignNumber { get; set; }
         public double Length { get; set; }
         [MaxLength(255)]
-        public string ProductCode { get; set; }
+        public string? ProductCode { get; set; }
         public int ProductId { get; set; }
         [MaxLength(255)]
-        public string ProductName { get; set; }
+        public string? ProductName { get; set; }
         [MaxLength(4000)]
-        public string Remark { get; set; }
+        public string? Remark { get; set; }
         public double ReturnQuantity { get; set; }
         [MaxLength(255)]
-        public string UOM { get; set; }
+        public string? UOM { get; set; }
         public int UOMId { get; set; }
         public double Weight { get; set; }
         public int FpReturnFromBuyerDetailId { get; set; }

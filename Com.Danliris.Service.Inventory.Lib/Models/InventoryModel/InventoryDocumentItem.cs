@@ -9,15 +9,15 @@ namespace Com.Danliris.Service.Inventory.Lib.Models.InventoryModel
     {
         /* Product */
         public int ProductId { get; set; }
-        public string ProductCode { get; set; }
-        public string ProductName { get; set; }
+        public string? ProductCode { get; set; }
+        public string? ProductName { get; set; }
 
-        public string UomUnit { get; set; }
+        public string? UomUnit { get; set; }
         public int UomId { get; set; }
 
         public double Quantity { get; set; }
         public double StockPlanning { get; set; }
-        public string ProductRemark { get; set; }
+        public string? ProductRemark { get; set; }
 
         public int MongoIndexItem { get; set; }
 

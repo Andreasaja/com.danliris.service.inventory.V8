@@ -10,15 +10,15 @@ namespace Com.Danliris.Service.Inventory.Lib.Models.InventoryWeavingModel
     {
         
         public DateTimeOffset Date { get; set; }
-        public string BonNo { get; set; }
-        public string BonType { get; set; }
+        public string? BonNo { get; set; }
+        public string? BonType { get; set; }
         
 
         public int StorageId { get; set; }
-        public string StorageCode { get; set; }
-        public string StorageName { get; set; }
-        public string Remark { get; set; }
-        public string Type { get; set; }
+        public string? StorageCode { get; set; }
+        public string? StorageName { get; set; }
+        public string? Remark { get; set; }
+        public string? Type { get; set; }
         public virtual ICollection<InventoryWeavingDocumentItem> Items { get; set; }
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {

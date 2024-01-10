@@ -8,11 +8,11 @@ namespace Com.Danliris.Service.Inventory.Lib.Models.MaterialDistributionNoteMode
 {
     public class MaterialDistributionNote : StandardEntity, IValidatableObject
     {
-        public string No { get; set; }
-        public string UnitId { get; set; }
-        public string UnitCode { get; set; }
-        public string UnitName { get; set; }
-        public string Type { get; set; }
+        public string? No { get; set; }
+        public string? UnitId { get; set; }
+        public string? UnitCode { get; set; }
+        public string? UnitName { get; set; }
+        public string? Type { get; set; }
         public bool IsApproved { get; set; }
         public bool IsDisposition { get; set; }
         public int AutoIncrementNumber { get; set; }

@@ -8,12 +8,12 @@ namespace Com.Danliris.Service.Inventory.Lib.Models.GarmentWasteProduction.Recei
 {
     public class GarmentReceiptWasteProductions : StandardEntity, IValidatableObject
     {
-        public string GarmentReceiptWasteNo { get; set; }
-        public string SourceName { get; set; }
-        public string DestinationName { get; set; }
+        public string? GarmentReceiptWasteNo { get; set; }
+        public string? SourceName { get; set; }
+        public string? DestinationName { get; set; }
         public DateTimeOffset ReceiptDate { get; set; }
-        public string WasteType { get; set; }
-        public string Remark { get; set; }
+        public string? WasteType { get; set; }
+        public string? Remark { get; set; }
         public double TotalAval { get; set; }
         public bool IsUsed { get; set; }
         public virtual ICollection<GarmentReceiptWasteProductionItems> Items { get; set; }

@@ -10,13 +10,13 @@ namespace Com.Danliris.Service.Inventory.Lib.Models.MaterialsRequestNoteModel
 {
     public class MaterialsRequestNote : StandardEntity, IValidatableObject
     {
-        public string Code { get; set; }
-        public string UnitId { get; set; }
-        public string UnitCode { get; set; }
-        public string UnitName { get; set; }
-        public string Remark { get; set; }
-        public string RequestType { get; set; }
-        public string Type { get; set; }
+        public string? Code { get; set; }
+        public string? UnitId { get; set; }
+        public string? UnitCode { get; set; }
+        public string? UnitName { get; set; }
+        public string? Remark { get; set; }
+        public string? RequestType { get; set; }
+        public string? Type { get; set; }
         public bool IsDistributed { get; set; }
         public bool IsCompleted { get; set; }
         public int AutoIncrementNumber { get; set; }

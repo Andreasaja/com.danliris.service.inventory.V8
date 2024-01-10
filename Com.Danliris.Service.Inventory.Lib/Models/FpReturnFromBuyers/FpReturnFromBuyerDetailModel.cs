@@ -12,7 +12,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Models.FpReturnFromBuyers
         //public ProductionOrderViewModel ProductionOrder { get; set; }
         public int ProductionOrderId { get; set; }
         [MaxLength(255)]
-        public string ProductionOrderNo { get; set; }
+        public string? ProductionOrderNo { get; set; }
         public int FpReturnFromBuyerId { get; set; }
         public virtual FpReturnFromBuyerModel FpReturnFromBuyer { get; set; }
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

@@ -9,7 +9,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Models.GarmentLeftoverWarehouse.Bal
     public class GarmentLeftoverWarehouseBalanceStock : StandardEntity, IValidatableObject
     {
         public DateTimeOffset BalanceStockDate { get; set; }
-        public string TypeOfGoods { get; set; }
+        public string? TypeOfGoods { get; set; }
         public virtual ICollection<GarmentLeftoverWarehouseBalanceStockItem> Items { get; set; }
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)

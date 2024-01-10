@@ -8,7 +8,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Models.GarmentWasteProduction.Expen
     public class GarmentExpenditureWasteProductionItems : StandardEntity
     {
         public int GarmentExpenditureWasteId { get; set; }
-        public string GarmentReceiptWasteNo { get; set; }
+        public string? GarmentReceiptWasteNo { get; set; }
         public int GarmentReceiptWasteId { get; set; }
         public double Quantity { get; set; }
         
