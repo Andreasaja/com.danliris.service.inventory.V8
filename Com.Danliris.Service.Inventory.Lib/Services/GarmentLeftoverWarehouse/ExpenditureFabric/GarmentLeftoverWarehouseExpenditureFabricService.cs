@@ -420,6 +420,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.GarmentLeftoverWarehouse.E
                 {
                     garmentProduct = GetProductFromCore(stock.ProductId.ToString());
                     garmentProduct.PONo = item.PONo;
+                    
                     garmentProducts.Add(garmentProduct);
                 }
             }

@@ -2,6 +2,7 @@
 using Com.Danliris.Service.Inventory.Lib.PDFTemplates.GarmentLeftoverWarehouse;
 using Com.Danliris.Service.Inventory.Lib.Services;
 using Com.Danliris.Service.Inventory.Lib.Services.GarmentLeftoverWarehouse.ExpenditureFabric;
+using Com.Danliris.Service.Inventory.Lib.ViewModels;
 using Com.Danliris.Service.Inventory.Lib.ViewModels.GarmentLeftoverWarehouse.ExpenditureFabric;
 using Com.Danliris.Service.Inventory.WebApi.Helpers;
 using Microsoft.AspNetCore.Authorization;
@@ -31,6 +32,27 @@ namespace Com.Danliris.Service.Inventory.WebApi.Controllers.v1.GarmentLeftoverWa
                 var model = await Service.ReadByIdAsync(Id);
                 var viewModel = Service.MapToViewModel(model);
                 var products = Service.getProductForPDF(model);
+
+                //buka sc vs 2019 versi netcore 2,lalu cari return
+                //dari products lalu buat statis array di var products
+                //dibawah ini adlh hasil statis array nya
+               
+                //GarmentProductViewModel pro = new GarmentProductViewModel
+                //{
+                //    Id= "118459",
+                //    Code = "CT0094805",
+                //    Name = "FABRIC",
+                //    Yarn = "21/2X21/2",
+                //    Const = "70X68",
+                //    Width = "57/58",
+                //    PONo = "PM23100001",
+                //    Composition = "100% COTTON"
+
+                //};
+                //var products = new List<GarmentProductViewModel>();
+                //products.Add(pro);
+                //sampai sini
+
                 GarmentLeftoverWarehouseExpenditureFabricPDFTemplate PdfTemplate = new GarmentLeftoverWarehouseExpenditureFabricPDFTemplate();
                 MemoryStream stream = PdfTemplate.GeneratePdfTemplate(viewModel, products);
 
