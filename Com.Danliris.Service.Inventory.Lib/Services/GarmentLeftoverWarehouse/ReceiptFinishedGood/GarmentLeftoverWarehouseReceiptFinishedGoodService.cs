@@ -542,7 +542,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.GarmentLeftoverWarehouse.G
                             UomUnit = b.UomUnit,
                             Price = Math.Round(b.BasicPrice * b.Quantity,2),
                         };
-            var querySum= Query
+            var querySum= Query.ToList()
                 .GroupBy(x => new { x.ReceiptNoteNo, x.ReceiptDate, x.UnitFromCode, x.ExpenditureGoodNo, x.ComodityCode, x.ComodityName, x.RONo,x.UomUnit, x.UnitComodityCode }, (key, group) => new
             ReceiptFinishedGoodMonitoringViewModel
             {
