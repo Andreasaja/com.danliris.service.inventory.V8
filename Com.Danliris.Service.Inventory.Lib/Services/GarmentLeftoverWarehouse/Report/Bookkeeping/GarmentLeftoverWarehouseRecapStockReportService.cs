@@ -203,7 +203,15 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.GarmentLeftoverWarehouse.R
                                      join b in DbContext.GarmentLeftoverWarehouseReceiptFabricItems on a.Id equals b.GarmentLeftoverWarehouseReceiptFabricId
                                      select new GarmentLeftoverWarehouseRecapStockReportViewModel
                                      {
-                                         Description = "PENERIMAAN"
+                                         Description = "PENERIMAAN",
+                                         FabricPrice = 0,
+                                         FabricQty = 0,
+                                         FabricUom = null,
+                                         AccPrice = 0,
+                                         FinishedGoodQty = 0,
+                                         FinishedGoodPrice = 0,
+                                         FinishedGoodUom = null,
+                                         Unit = null
 
                                      };
             var QueryReceiptFABRICNow = from a in (from data in DbContext.GarmentLeftoverWarehouseReceiptFabrics
@@ -317,6 +325,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.GarmentLeftoverWarehouse.R
                                                   };
 
             #endregion
+            //kemungkinan eror trjdi di var QuerySaldo
             var QuerySaldo = QueryBalanceACC.Union(QueryBalanceExpenditureACC).Union(QueryBalanceReceiptACC)
                             .Union(QueryBalanceFABRIC).Union(QueryBalanceExpenditureFABRIC).Union(QueryBalanceReceiptFABRIC)
                             .Union(QueryBalanceFinishedGood).Union(QueryBalanceExpenditureFinishedGood).Union(QueryBalanceReceiptFinishedGood)
@@ -351,6 +360,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.GarmentLeftoverWarehouse.R
                       FinishedGoodQty = group.Sum(s => s.FinishedGoodQty),
                       FinishedGoodPrice = group.Sum(s => s.FinishedGoodPrice)
                   });
+            //smpai sini berhenti
             foreach (var data in querySum)
             {
 
