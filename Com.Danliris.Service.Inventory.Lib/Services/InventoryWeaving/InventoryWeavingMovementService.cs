@@ -297,7 +297,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.InventoryWeaving
             }
            
 
-            var data = query.GroupBy(s => new {
+            var data = query.ToList().GroupBy(s => new {
                 s.Grade,
                
                 s.Type,
@@ -333,7 +333,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.InventoryWeaving
 
             });
 
-            var result = data.GroupBy(s => new
+            var result = data.ToList().GroupBy(s => new
             {
                 s.Grade,
                 s.MaterialName,
@@ -442,7 +442,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.InventoryWeaving
 
                           });
 
-            var data1 = result.GroupBy(s => new
+            var data1 = result.ToList().GroupBy(s => new
             {
                 s.Grade,
 
@@ -478,7 +478,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.InventoryWeaving
 
             });
                          
-                        var data = data1.GroupBy(s => new
+                        var data = data1.ToList().GroupBy(s => new
                          {
                              s.Grade,
                              s.MaterialName,
