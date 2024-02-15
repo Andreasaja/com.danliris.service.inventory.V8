@@ -609,7 +609,7 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.InventoryWeaving
                             && a.BonType == (string.IsNullOrWhiteSpace(bonType) ? a.BonType : bonType)
                             && a.Type == "OUT"
                               && a.Date.AddHours(offset).Date >= DateFrom.Date
-                             && a.Date.AddHours(offset).Date <= DateTo.Date
+                             && a.Date.ToOffset(new TimeSpan(offset, 0, 0)).Date <= DateTo.Date
                         orderby a.Date, a._CreatedUtc ascending
                         select new InventoryWeavingDocumentCsvOutViewModel
                         {
