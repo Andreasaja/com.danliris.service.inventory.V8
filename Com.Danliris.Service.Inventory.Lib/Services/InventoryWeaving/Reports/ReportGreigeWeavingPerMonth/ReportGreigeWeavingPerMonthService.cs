@@ -94,8 +94,8 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.InventoryWeaving.Reports.R
             var startDate = new DateTime(dateReport.Year, dateReport.Month, 1);
 
 
-            var QueryAll = ( from  a in DbSetMovement
-                             join c in DbSetDoc on a.InventoryWeavingDocumentId equals c.Id into m
+            var QueryAll = ( from  a in DbSetMovement.ToList()
+                             join c in DbSetDoc.ToList() on a.InventoryWeavingDocumentId equals c.Id into m
                              from b in m.DefaultIfEmpty()
                              where
                              a._IsDeleted == false
