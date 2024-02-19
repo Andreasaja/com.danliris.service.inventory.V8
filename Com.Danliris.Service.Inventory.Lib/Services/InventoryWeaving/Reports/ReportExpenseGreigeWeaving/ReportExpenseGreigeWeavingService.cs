@@ -63,8 +63,8 @@ namespace Com.Danliris.Service.Inventory.Lib.Services.InventoryWeaving.Reports.R
             DateTime DateFrom = dateFrom == null ? new DateTime(1970, 1, 1) : (DateTime)dateFrom;
             DateTime DateTo = dateTo == null ? DateTime.Now : (DateTime)dateTo;
 
-            var result = (from a in DbContext.InventoryWeavingDocuments
-                          join b in DbContext.InventoryWeavingMovements on a.Id equals b.InventoryWeavingDocumentId
+            var result = (from a in DbContext.InventoryWeavingDocuments.ToList()
+                          join b in DbContext.InventoryWeavingMovements.ToList() on a.Id equals b.InventoryWeavingDocumentId
                           where a._IsDeleted == false
                              && b._IsDeleted == false
                              && a.BonType == (string.IsNullOrWhiteSpace(bonType) ? a.BonType : bonType)
